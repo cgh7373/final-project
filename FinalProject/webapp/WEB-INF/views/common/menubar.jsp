@@ -7,14 +7,14 @@
 		<title>Insert title here</title>
 		<style>
 			@font-face {
-				font-family: 'GowunBatang-Regular';
-				src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+				font-family: 'GangwonEdu_OTFBoldA';
+				src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
 				font-weight: normal;
 				font-style: normal;
 			}
 
 			body * {
-				font-family: 'GowunBatang-Regular';
+				font-family: 'GangwonEdu_OTFBoldA';
 				font-weight: normal;
 			}
 
@@ -26,6 +26,8 @@
 				align-items: center;
 				position: relative;
 				font-size: 20px;
+				margin: 20px auto;
+				border-radius: 4px;
 			}
 
 			.project_name {
@@ -36,22 +38,42 @@
 				display: flex;
 				position: absolute;
 				right: 10%;
-				gap: 20px;
 				transition: .4s;
-
-				& div {
-					display: flex;
+				height: 100%;
+				width: 50%;
+				overflow: hidden;
+				
+				& .menuEls {
 					height: 50px;
-					justify-content: center;
-					align-items: center;
+					line-height: 50px;
 					transition: .4s;
+					cursor: pointer;
+					width: 20%;
+					text-align: center;
+					z-index: 1;
 				}
 
-				& div:hover {
-					background-color: bisque;
-					cursor: pointer;
+				& .menuSlide {
+					height: 50px;
+					position: absolute;
+					background-color: rgb(241, 156, 125);
+					width: 20%;
+					transform: translateX(-100%);
+					z-index: 0;
+					transition: .4s;
+					border-radius: 5px;
 				}
+
 			}
+
+			.outer {
+				width: 100%;
+				height: auto;
+				border-radius: 4px;
+				background-color: beige;
+				margin: 10px auto;
+			}
+
 		</style>
 	</head>
 
@@ -61,17 +83,50 @@
 			<div class="project_name">Project Name</div>
 
 			<div class="menubar">
-				<div>프로젝트관리</div>
-				<div>코드작성</div>
-				<div>코딩테스트</div>
-				<div>커뮤니티</div>
-				<div>취업관련</div>
+				<div class="menuSlide"></div>
+				<div class="menuEls">프로젝트관리</div>
+				<div class="menuEls" onclick="toCodeTyping()">코드작성</div>
+				<div class="menuEls">코딩테스트</div>
+				<div class="menuEls">커뮤니티</div>
+				<div class="menuEls">취업관련</div>
 			</div>
 
 			<div class="about_user">
 				<!-- 여기 아이콘같은걸로 로그인/마이페이지 뭐 이런거 넣으시면 될듯 -->
 			</div>
 		</header>
+
+		<div class="outer">
+
+		</div>
+
+
+
+
+
+
+		<script>
+
+			const menuEls = document.querySelectorAll('.menuEls');
+			const menuSlide = document.querySelector('.menuSlide');
+			let currentIndex = 0;
+
+			menuEls.forEach((el, index) => {
+				el.addEventListener('mouseover', () => {
+					menuSlide.style.transform = `translateX(\${index * 100}%)`;
+					currentIndex = index;
+				});
+			});
+
+			document.querySelector('.menubar').addEventListener('mouseleave', () => {
+				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 100%)`;
+			});
+
+			function toCodeTyping() {
+				location.href = "codeTyping.co"
+			}
+
+		</script>
 
 	</body>
 
