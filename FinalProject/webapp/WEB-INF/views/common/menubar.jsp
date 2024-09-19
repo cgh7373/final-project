@@ -65,14 +65,15 @@
 				}
 
 				& .menuSlide {
-					height: 70px;
+					height: 68px;
 					position: absolute;
 					background-color: rgb(250, 208, 93);
 					width: 20%;
 					transform: translateX(-100%);
 					z-index: 0;
 					transition: .4s;
-					border-radius: 5px;
+					border-radius: 10px;
+					margin: 1px 0;
 				}
 
 			}
