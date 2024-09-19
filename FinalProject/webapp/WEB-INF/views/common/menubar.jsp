@@ -9,6 +9,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<style>
 			@font-face {
 				font-family: 'GangwonEdu_OTFBoldA';
@@ -85,6 +86,41 @@
 				background-color: beige;
 				margin: 10px auto;
 			}
+			.about_user
+			{
+				position: absolute;
+				display: flex;
+				right: 3%;
+				height: 100%;
+				width: 4%;
+				border-radius: 10px;
+			}
+			.about_user:hover span
+			{
+				color: rgb(250, 208, 93);
+				cursor: pointer;
+				transition: .2s;
+			}
+			.about_user:hover>div
+			{
+				color: rgb(250, 208, 93);
+				cursor: pointer;
+				transition: .2s;
+			}
+			.about_user span
+			{
+				width: 40%;
+				height: 100%;
+				font-size: 35px;
+				line-height: 200%;
+			}
+			.about_user div
+			{
+				font-size: large;
+				width: 60%;
+				height: 100%;
+				text-align: center;
+			}
 		</style>
 	</head>
 
@@ -102,11 +138,11 @@
 				<div class="menuEls">취업관련</div>
 			</div>
 
-			<div class="about_user">
-				<!-- 여기 아이콘같은걸로 로그인/마이페이지 뭐 이런거 넣으시면 될듯 -->
+			<div class="about_user" onclick="loginUser()">
+				<span class="material-symbols-outlined">login</span>
+				<div>login</div>
 			</div>
 		</header>
-
 		<div class="outer">
 
 		</div>
@@ -136,6 +172,12 @@
 			function toCodeTyping() {
 				location.href = "codeTyping.co"
 			}
+			function loginUser()
+			{
+				location.href = "../member/LoginPage.jsp";
+				console.log("로그인 페이지 이동");
+			}
+			
 
 		</script>
 
