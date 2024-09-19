@@ -26,7 +26,7 @@
 				align-items: center;
 				position: relative;
 				font-size: 20px;
-				margin: 20px auto;
+				margin: 10px auto;
 				border-radius: 4px;
 			}
 
@@ -45,12 +45,15 @@
 				
 				& .menuEls {
 					height: 50px;
-					line-height: 50px;
+					line-height: 55px;
 					transition: .4s;
 					cursor: pointer;
 					width: 20%;
 					text-align: center;
 					z-index: 1;
+					&:hover {
+						font-size : 21px;
+					}
 				}
 
 				& .menuSlide {
