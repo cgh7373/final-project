@@ -5,6 +5,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<style>
 			@font-face {
 				font-family: 'GangwonEdu_OTFBoldA';
@@ -20,46 +24,50 @@
 
 			header {
 				display: flex;
-				width: 100vw;
-				height: 50px;
+				width: 99vw;
+				height: 70px;
 				background-color: antiquewhite;
 				align-items: center;
 				position: relative;
 				font-size: 20px;
 				margin: 10px auto;
 				border-radius: 4px;
+				line-height: 75px;
 			}
 
 			.project_name {
-				margin-left: 3%;
+				margin-left: 2%;
+				width: 8%;
+				height: 100%;
 			}
 
 			.menubar {
 				display: flex;
 				position: absolute;
-				right: 10%;
+				right: 20%;
 				transition: .4s;
 				height: 100%;
 				width: 50%;
 				overflow: hidden;
-				
+
 				& .menuEls {
-					height: 50px;
-					line-height: 55px;
+					height: 70px;
+
 					transition: .4s;
 					cursor: pointer;
 					width: 20%;
 					text-align: center;
 					z-index: 1;
+
 					&:hover {
-						font-size : 21px;
+						font-size: 21px;
 					}
 				}
 
 				& .menuSlide {
-					height: 50px;
+					height: 70px;
 					position: absolute;
-					background-color: rgb(241, 156, 125);
+					background-color: rgb(250, 208, 93);
 					width: 20%;
 					transform: translateX(-100%);
 					z-index: 0;
@@ -76,14 +84,13 @@
 				background-color: beige;
 				margin: 10px auto;
 			}
-
 		</style>
 	</head>
 
 	<body>
 
 		<header>
-			<div class="project_name">Project Name</div>
+			<img class="project_name" src="resources/image/logo-removebg-preview.png" />
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
