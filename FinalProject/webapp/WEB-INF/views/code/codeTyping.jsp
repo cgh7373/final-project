@@ -1,84 +1,125 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-		body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-        #editor {
-            width: 100vw;
-            height: 90vh;
-            border-bottom: 2px solid #ccc; 
-        }
-    
-        #errors {
-            width: 100vw;
-            height: 10vh; 
-            overflow-y: auto; 
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 14px; 
-        }
-</style>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html lang="ko">
 
-    <!-- 이거 eslint 말고 오류검출부터 외부api가져와서 해보기 -->
-
-
-
-
-
-	<jsp:include page="../common/menubar.jsp" />
-	
-	
-    <div id="editor"></div>
-    
-    <div id="errors" class="error"></div>
-	
-
-	<script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
-    <script src="https://unpkg.com/eslint@latest/eslint.js"></script>
-    
-    <script>
-        require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@latest/min/vs' }});
-        require(['vs/editor/editor.main'], function () {
-            const editor = monaco.editor.create(document.getElementById('editor'), {
-                value: `// Write your code here\nconsole.log('Hello, world!');`,
-                language: 'javascript',
-                theme: 'vs-light'
-            });
-
-            async function lintCode(code) {
-                const eslint = await import('https://unpkg.com/eslint@latest/eslint.js');
-                const linter = new eslint.ESLint();
-                const results = await linter.lintText(code);
-
-                const errorDiv = document.getElementById('errors');
-                errorDiv.innerHTML = '';
-                results[0].messages.forEach(message => {
-                    const error = document.createElement('div');
-                    error.textContent = `${message.line}:${message.column} ${message.message} (${message.ruleId})`;
-                    errorDiv.appendChild(error);
-                });
+    <head>
+        <meta charset="UTF-8">
+        <title>코드 입력 및 오류 검출</title>
+        <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+        <style>
+            #editor {
+                width: 800px;
+                height: 400px;
+                border: 1px solid #ccc;
             }
 
-            editor.onDidChangeModelContent(() => {
-                const code = editor.getValue();
-                lintCode(code);
-            });
-        });
-        
-    </script>
+            #result {
+                margin-top: 20px;
+            }
 
+            #output {
+                border: 1px solid #ccc;
+                margin-top: 20px;
+                padding: 10px;
+                min-height: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>코드 입력 및 오류 검출</h1>
+        <select id="languageSelector">
+            <option value="javascript">JavaScript</option>
+            <option value="html">HTML</option>
+            <option value="jsp">JSP</option>
+        </select>
+        <div id="editor"></div>
+        <button id="submitBtn">전송</button>
+        <div id="result"></div>
+        <div id="output"></div>
+
+        <script>
+            require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@latest/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                const editor = monaco.editor.create(document.getElementById('editor'), {
+                    value: '// 코드를 입력하세요',
+                    language: 'javascript',
+                    automaticLayout: true,
+                    theme: 'vs-dark',
+                });
+
+                const initialValues = {
+                    javascript: '// JavaScript 예제\nconsole.log("안녕하세요!");',
+                    html: `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>안녕하세요!</h1>
 </body>
-</html>
+</html>`,
+                    jsp: `&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %&gt;
+<%-- JSP 예제 --%>
+<html>
+<head>
+    <title>JSP 예제</title>
+</head>
+<body>
+    <h1>안녕하세요 JSP!</h1>
+</body>
+</html>`
+                };
+
+                // 초기값 설정
+                editor.setValue(initialValues.javascript);
+
+                document.getElementById('languageSelector').addEventListener('change', function (e) {
+                    const language = e.target.value;
+                    editor.getModel().setLanguage(language);
+                    editor.setValue(initialValues[language]);
+                });
+
+                document.getElementById('submitBtn').addEventListener('click', function () {
+                    const code = editor.getValue();
+                    const resultDiv = document.getElementById('result');
+                    const outputDiv = document.getElementById('output');
+                    const selectedLanguage = document.getElementById('languageSelector').value;
+
+                    try {
+                        if (selectedLanguage === 'javascript') {
+                            eval(code);
+                            resultDiv.innerText = 'JavaScript 코드에 오류가 없습니다.';
+                            resultDiv.style.color = 'green';
+                        } else if (selectedLanguage === 'html') {
+                            outputDiv.innerHTML = code;
+                            resultDiv.innerText = 'HTML 코드가 정상적으로 렌더링되었습니다.';
+                            resultDiv.style.color = 'green';
+                        } else if (selectedLanguage === 'jsp') {
+                            fetch('executeJsp.jsp', {
+                                method: 'POST',
+                                body: JSON.stringify({ code: code }),
+                                headers: { 'Content-Type': 'application/json' }
+                            })
+                                .then(response => response.text())
+                                .then(data => {
+                                    resultDiv.innerText = 'JSP 코드 실행 결과:\n' + data;
+                                    resultDiv.style.color = 'green';
+                                })
+                                .catch(error => {
+                                    resultDiv.innerText = '오류: ' + error.message;
+                                    resultDiv.style.color = 'red';
+                                });
+                        }
+                    } catch (error) {
+                        resultDiv.innerText = '오류: ' + error.message;
+                        resultDiv.style.color = 'red';
+                    }
+                });
+            });
+        </script>
+    </body>
+
+    </html>

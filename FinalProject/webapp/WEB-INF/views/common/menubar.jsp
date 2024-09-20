@@ -9,7 +9,8 @@
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<style>
 			@font-face {
 				font-family: 'GangwonEdu_OTFBoldA';
@@ -66,7 +67,7 @@
 				}
 
 				& .menuSlide {
-					height: 68px;
+					height: 64px;
 					position: absolute;
 					background-color: rgb(250, 208, 93);
 					width: 20%;
@@ -74,7 +75,7 @@
 					z-index: 0;
 					transition: .4s;
 					border-radius: 10px;
-					margin: 1px 0;
+					margin-top: 3px;
 				}
 
 			}
@@ -86,8 +87,8 @@
 				background-color: beige;
 				margin: 10px auto;
 			}
-			.about_user
-			{
+
+			.about_user {
 				position: absolute;
 				display: flex;
 				right: 3%;
@@ -95,27 +96,27 @@
 				width: 4%;
 				border-radius: 10px;
 			}
-			.about_user:hover span
-			{
+
+			.about_user:hover span {
 				color: rgb(250, 208, 93);
 				cursor: pointer;
 				transition: .2s;
 			}
-			.about_user:hover>div
-			{
+
+			.about_user:hover>div {
 				color: rgb(250, 208, 93);
 				cursor: pointer;
 				transition: .2s;
 			}
-			.about_user span
-			{
+
+			.about_user span {
 				width: 40%;
 				height: 100%;
 				font-size: 35px;
 				line-height: 200%;
 			}
-			.about_user div
-			{
+
+			.about_user div {
 				font-size: large;
 				width: 60%;
 				height: 100%;
@@ -166,18 +167,17 @@
 			});
 
 			document.querySelector('.menubar').addEventListener('mouseleave', () => {
-				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 100%)`;
+				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 105%)`;
 			});
 
 			function toCodeTyping() {
 				location.href = "codeTyping.co"
 			}
-			function loginUser()
-			{
+			function loginUser() {
 				location.href = "../member/LoginPage.jsp";
 				console.log("로그인 페이지 이동");
 			}
-			
+
 
 		</script>
 
