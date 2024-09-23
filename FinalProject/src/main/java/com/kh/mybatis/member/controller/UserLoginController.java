@@ -27,7 +27,7 @@ public class UserLoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		request.getRequestDispatcher("WEB-INF/views/member/LoginPage.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/member/loginPage.jsp").forward(request, response);
 	}
 
 	/**
