@@ -174,7 +174,7 @@
 			}
 			function loginUser()
 			{
-				location.href = "../member/LoginPage.jsp";
+				location.href = "../member/loginPage.jsp";
 				console.log("로그인 페이지 이동");
 			}
 			
