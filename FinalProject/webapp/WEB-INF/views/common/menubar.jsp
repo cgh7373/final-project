@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+			
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -35,11 +35,12 @@
 				margin: 10px auto;
 				border-radius: 4px;
 				line-height: 75px;
+				transition: .4s;
 			}
 
 			.project_name {
 				margin-left: 2%;
-				width: 8%;
+				width: 140px;
 				height: 100%;
 			}
 
@@ -171,8 +172,10 @@
 			});
 
 			function toCodeTyping() {
-				location.href = "codeTyping.co"
+			    //const newWindow = window.open('http://localhost:5173/', '_blank', 'width=800,height=1000');
+			    const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
 			}
+			
 			function loginUser() {
 				location.href = "../member/LoginPage.jsp";
 				console.log("로그인 페이지 이동");
