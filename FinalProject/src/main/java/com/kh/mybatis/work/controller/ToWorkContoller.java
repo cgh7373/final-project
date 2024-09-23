@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class GoWorkContoller
  */
 @WebServlet("/work.wo")
-public class GoWorkContoller extends HttpServlet {
+public class ToWorkContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GoWorkContoller() {
+    public ToWorkContoller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,6 +27,7 @@ public class GoWorkContoller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.getRequestDispatcher("WEB-INF/views/work/workInfo.jsp").forward(request, response);
 	}
 
 	/**
