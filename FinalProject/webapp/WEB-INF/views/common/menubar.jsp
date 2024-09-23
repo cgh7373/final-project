@@ -5,11 +5,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+			
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<style>
 			@font-face {
 				font-family: 'GangwonEdu_OTFBoldA';
@@ -34,11 +35,12 @@
 				margin: 10px auto;
 				border-radius: 4px;
 				line-height: 75px;
+				transition: .4s;
 			}
 
 			.project_name {
 				margin-left: 2%;
-				width: 8%;
+				width: 140px;
 				height: 100%;
 			}
 
@@ -66,7 +68,7 @@
 				}
 
 				& .menuSlide {
-					height: 68px;
+					height: 64px;
 					position: absolute;
 					background-color: rgb(250, 208, 93);
 					width: 20%;
@@ -74,7 +76,7 @@
 					z-index: 0;
 					transition: .4s;
 					border-radius: 10px;
-					margin: 1px 0;
+					margin-top: 3px;
 				}
 
 			}
@@ -86,8 +88,8 @@
 				background-color: beige;
 				margin: 10px auto;
 			}
-			.about_user
-			{
+
+			.about_user {
 				position: absolute;
 				display: flex;
 				right: 3%;
@@ -95,27 +97,27 @@
 				width: 4%;
 				border-radius: 10px;
 			}
-			.about_user:hover span
-			{
+
+			.about_user:hover span {
 				color: rgb(250, 208, 93);
 				cursor: pointer;
 				transition: .2s;
 			}
-			.about_user:hover>div
-			{
+
+			.about_user:hover>div {
 				color: rgb(250, 208, 93);
 				cursor: pointer;
 				transition: .2s;
 			}
-			.about_user span
-			{
+
+			.about_user span {
 				width: 40%;
 				height: 100%;
 				font-size: 35px;
 				line-height: 200%;
 			}
-			.about_user div
-			{
+
+			.about_user div {
 				font-size: large;
 				width: 60%;
 				height: 100%;
@@ -131,7 +133,7 @@
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
-				<div class="menuEls">프로젝트관리</div>
+				<div class="menuEls" onclick="toGitConnect()">프로젝트관리</div>
 				<div class="menuEls" onclick="toCodeTyping()">코드작성</div>
 				<div class="menuEls">코딩테스트</div>
 				<div class="menuEls">커뮤니티</div>
@@ -166,18 +168,23 @@
 			});
 
 			document.querySelector('.menubar').addEventListener('mouseleave', () => {
-				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 100%)`;
+				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 105%)`;
 			});
 
 			function toCodeTyping() {
-				location.href = "codeTyping.co"
-			}
-			function loginUser()
-			{
-				location.href = "../member/loginPage.jsp";
-				console.log("로그인 페이지 이동");
+			    //const newWindow = window.open('http://localhost:5173/', '_blank', 'width=800,height=1000');
+			    const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
 			}
 			
+			function loginUser() {
+				location.href = "../member/LoginPage.jsp";
+				console.log("로그인 페이지 이동");
+			}
+			function toGitConnect(){
+				location.href="../git/gitMainPage.jsp"
+			}
+
+
 
 		</script>
 
