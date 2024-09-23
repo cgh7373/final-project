@@ -133,7 +133,7 @@
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
-				<div class="menuEls" onclick="toGitConnect()">프로젝트관리</div>
+				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
 				<div class="menuEls" onclick="toCodeTyping()">코드작성</div>
 				<div class="menuEls">코딩테스트</div>
 				<div class="menuEls">커뮤니티</div>
@@ -180,8 +180,8 @@
 				location.href = "../member/loginPage.jsp";
 				console.log("로그인 페이지 이동");
 			}
-			function toGitConnect(){
-				location.href="../git/gitMainPage.jsp"
+			function toProjectMain(){
+				location.href="projectMain"
 			}
 
 

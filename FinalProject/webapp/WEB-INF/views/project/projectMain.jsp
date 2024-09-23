@@ -8,8 +8,7 @@
 </head>
 <body>
 	<jsp:include page="../common/menubar.jsp" />
-	
-	fdsa
+	asdf
 
 </body>
 </html>
