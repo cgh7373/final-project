@@ -42,6 +42,7 @@
 				margin-left: 2%;
 				width: 140px;
 				height: 100%;
+				cursor: pointer;
 			}
 
 			.menubar {
@@ -129,7 +130,7 @@
 	<body>
 
 		<header>
-			<img class="project_name" src="resources/image/logo-removebg-preview.png" />
+			<img class="project_name" src="resources/image/logo-removebg-preview.png" onclick="toMain()"/>
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
@@ -170,6 +171,10 @@
 			document.querySelector('.menubar').addEventListener('mouseleave', () => {
 				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 105%)`;
 			});
+
+			function toMain(){
+				location.href="toMain"
+			}
 
 			function toCodeTyping() {
 			    //const newWindow = window.open('http://localhost:5173/', '_blank', 'width=800,height=1000');
