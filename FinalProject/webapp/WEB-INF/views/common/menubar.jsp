@@ -174,8 +174,7 @@
 				location.href = "codeTyping.co"
 			}
 			function loginUser() {
-				location.href = "../member/LoginPage.jsp";
-				console.log("로그인 페이지 이동");
+				location.href = "login.me";
 			}
 
 
