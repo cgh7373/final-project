@@ -135,7 +135,7 @@
 				<div class="menuEls" onclick="toCodeTyping()">코드작성</div>
 				<div class="menuEls">코딩테스트</div>
 				<div class="menuEls">커뮤니티</div>
-				<div class="menuEls">취업관련</div>
+				<div class="menuEls" onclick="location.href='work.wo'">취업관련</div>
 			</div>
 
 			<div class="about_user" onclick="loginUser()">
