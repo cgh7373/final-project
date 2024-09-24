@@ -9,6 +9,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<!-- <script defer src="resources/js/newsApi.js"></script> 이거 나중에 spring으로 -->
 		<link rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<style>
@@ -26,16 +27,17 @@
 
 			header {
 				display: flex;
-				width: 99vw;
+				width: 98vw;
 				height: 70px;
 				background-color: antiquewhite;
 				align-items: center;
-				position: relative;
+				position: sticky;
+				top: 15px;
 				font-size: 20px;
-				margin: 10px auto;
-				border-radius: 4px;
+				margin: auto;
+				z-index: 10;
 				line-height: 75px;
-				transition: .4s;
+				border-radius: 10px;
 			}
 
 			.project_name {
@@ -54,40 +56,54 @@
 				width: 50%;
 				overflow: hidden;
 
-				& .menuEls {
-					height: 70px;
+			}
 
-					transition: .4s;
-					cursor: pointer;
-					width: 20%;
-					text-align: center;
-					z-index: 1;
+			.menuEls {
+				height: 70px;
+				transition: .4s;
+				cursor: pointer;
+				width: 20%;
+				text-align: center;
+				z-index: 1;
+			}
 
-					&:hover {
-						font-size: 21px;
-					}
-				}
+			.menuEls:hover {
+				font-size: 21px;
+			}
 
-				& .menuSlide {
-					height: 64px;
-					position: absolute;
-					background-color: rgb(250, 208, 93);
-					width: 20%;
-					transform: translateX(-100%);
-					z-index: 0;
-					transition: .4s;
-					border-radius: 10px;
-					margin-top: 3px;
-				}
-
+			.menuSlide {
+				height: 64px;
+				position: absolute;
+				background-color: rgb(250, 208, 93);
+				width: 20%;
+				transform: translateX(-100%);
+				z-index: 0;
+				transition: .4s;
+				border-radius: 10px;
+				margin-top: 3px;
 			}
 
 			.outer {
+				position: relative;
 				width: 100%;
 				height: auto;
 				border-radius: 4px;
-				background-color: beige;
 				margin: 10px auto;
+				overflow: hidden;
+			}
+
+			.outer::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-image: url(resources/image/Designer5.jpeg);
+				background-size: cover;
+				background-attachment: fixed;
+				opacity: 0.2;
+				z-index: -1;
 			}
 
 			.about_user {
@@ -121,13 +137,13 @@
 	<body>
 
 		<header>
-			<img class="project_name" src="resources/image/logo-removebg-preview.png" onclick="toMain()"/>
+			<img class="project_name" src="resources/image/logo-removebg-preview.png" onclick="toMain()" />
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
+				<div class="menuEls" onclick="toCommunity()">홈</div>
 				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
 				<div class="menuEls">코딩테스트</div>
-				<div class="menuEls">커뮤니티</div>
 				<div class="menuEls">취업관련</div>
 			</div>
 
@@ -136,14 +152,10 @@
 				<span class="material-symbols-outlined" onclick="loginUser()">login</span>
 			</div>
 		</header>
+
 		<div class="outer">
 
 		</div>
-
-
-
-
-
 
 		<script>
 
@@ -162,10 +174,14 @@
 				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 105%)`;
 			});
 
-			function toMain(){
-				location.href="toMain"
+			function toMain() {
+				location.href = "toMain"
 			}
 
+			function toCommunity() {
+				location.href = "searchNews"
+			}
+			
 			function toCodeTyping() {
 				const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
 			}
@@ -173,6 +189,7 @@
 			function loginUser() {
 				location.href = "login.me";
 			}
+
 			function toProjectMain() {
 				location.href = "projectMain"
 			}
@@ -186,7 +203,7 @@
 				});
 
 				icon.addEventListener('mouseleave', () => {
-					icon.style.color = ''; 
+					icon.style.color = '';
 				});
 
 			});
