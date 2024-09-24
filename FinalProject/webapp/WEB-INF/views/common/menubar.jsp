@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-			
+
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -92,22 +92,11 @@
 			.about_user {
 				position: absolute;
 				display: flex;
-				right: 3%;
+				right: 2%;
 				height: 100%;
 				width: 4%;
 				border-radius: 10px;
-			}
-
-			.about_user:hover span {
-				color: rgb(250, 208, 93);
-				cursor: pointer;
-				transition: .2s;
-			}
-
-			.about_user:hover>div {
-				color: rgb(250, 208, 93);
-				cursor: pointer;
-				transition: .2s;
+				gap: 20px;
 			}
 
 			.about_user span {
@@ -115,6 +104,8 @@
 				height: 100%;
 				font-size: 35px;
 				line-height: 200%;
+				cursor: pointer;
+				transition: .2s;
 			}
 
 			.about_user div {
@@ -134,15 +125,14 @@
 			<div class="menubar">
 				<div class="menuSlide"></div>
 				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
-				<div class="menuEls" onclick="toCodeTyping()">코드작성</div>
 				<div class="menuEls">코딩테스트</div>
 				<div class="menuEls">커뮤니티</div>
 				<div class="menuEls">취업관련</div>
 			</div>
 
-			<div class="about_user" onclick="loginUser()">
-				<span class="material-symbols-outlined">login</span>
-				<div>login</div>
+			<div class="about_user">
+				<span class="material-icons" onclick="toCodeTyping()">description</span>
+				<span class="material-symbols-outlined" onclick="loginUser()">login</span>
 			</div>
 		</header>
 		<div class="outer">
@@ -172,17 +162,29 @@
 			});
 
 			function toCodeTyping() {
-			    //const newWindow = window.open('http://localhost:5173/', '_blank', 'width=800,height=1000');
-			    const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
+				const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
 			}
-			
+
 			function loginUser() {
 				location.href = "login.me";
 			}
-			function toProjectMain(){
-				location.href="projectMain"
+			function toProjectMain() {
+				location.href = "projectMain"
 			}
 
+			const icons = document.querySelectorAll('.about_user span');
+
+			icons.forEach(icon => {
+
+				icon.addEventListener('mouseenter', () => {
+					icon.style.color = 'rgb(250, 208, 93)';
+				});
+
+				icon.addEventListener('mouseleave', () => {
+					icon.style.color = ''; 
+				});
+
+			});
 
 
 		</script>
