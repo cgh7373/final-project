@@ -1,319 +1,244 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <title>Login Form</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* {
+*{
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-body {
-  background: #f6f5f7;
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.wave{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap :7rem;
+    padding: 0 2rem;
+}
+
+.img{
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px;
 }
 
-h1 {
-  font-weight: bold;
-  margin: 0;
-}
-
-h2 {
+.login-content{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
 }
 
-p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
+.img img{
+  width: 500px;
 }
 
-span {
-  font-size: 12px;
+form{
+  width: 360px;
 }
 
-a {
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
+.login-content img{
+    height: 100px;
+}
+
+.login-content h2{
   margin: 15px 0;
-}
-
-button {
-  border-radius: 20px;
-  border: 1px solid rgb(252, 226, 192);
-  background-color: rgb(250, 226, 192);
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
+  color: #333;
   text-transform: uppercase;
-  transition: transform 80ms ease-in;
+  font-size: 2.9rem;
 }
 
-button:active {
-  transform: scale(0.95);
-}
-
-button:focus {
-  outline: none;
-}
-
-button.ghost {
-  background-color: transparent;
-  border-color: #FFFFFF;
-}
-
-form {
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-}
-
-input {
-  background-color: #eee;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
-  width: 100%;
-}
-
-.container {
-  background-color: #fff;
-  border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-      0 10px 10px rgba(0,0,0,0.22);
+.login-content .input-div{
   position: relative;
-  overflow: hidden;
-  width: 768px;
-  max-width: 100%;
-  min-height: 480px;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
 }
 
-.form-container {
+.login-content .input-div.one{
+  margin-top: 0;
+}
+
+.i{
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.i i{
+  transition: .3s;
+}
+
+.input-div > div{
+    position: relative;
+  height: 45px;
+}
+.input-div:before, .input-div:after{
+  content: '';
   position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #38d39f;
+  transition: .4s;
 }
 
-.sign-in-container {
-  left: 0;
-  width: 50%;
-  z-index: 2;
+.input-div:before{
+  right: 50%;
 }
 
-.container.right-panel-active .sign-in-container {
-  transform: translateX(100%);
-}
-
-.sign-up-container {
-  left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
-}
-
-.container.right-panel-active .sign-up-container {
-  transform: translateX(100%);
-  opacity: 1;
-  z-index: 5;
-  animation: show 0.6s;
-}
-
-@keyframes show {
-  0%, 49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-  
-  50%, 100% {
-    opacity: 1;
-    z-index: 5;
-  }
-}
-
-.overlay-container {
-  position: absolute;
-  top: 0;
+.input-div:after{
   left: 50%;
+}
+
+.input-div.focus:before, .input-div.focus:after{
   width: 50%;
-  height: 100%;
-  overflow: hidden;
-  transition: transform 0.6s ease-in-out;
-  z-index: 100;
 }
 
-.container.right-panel-active .overlay-container{
-  transform: translateX(-100%);
+.input-div.focus > div > h5{
+  top: -5px;
+  font-size: 15px;
 }
 
-.overlay {
-  background: antiquewhite;
-  background: -webkit-linear-gradient(to right,rgb(250, 208, 93), rgb(250, 208, 93));
-  background: linear-gradient(to right, rgb(250, 208, 93), rgb(250, 208, 93));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  color: #FFFFFF;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-    transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+.input-div.pass{
+  margin-bottom: 4px;
 }
 
-.container.right-panel-active .overlay {
-    transform: translateX(50%);
+a{
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  color: #999;
+  font-size: 0.9rem;
+  transition: .3s;
 }
 
-.overlay-panel {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+a:hover{
+  color: #38d39f;
 }
 
-.overlay-left {
-  transform: translateX(-20%);
+.btn{
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-color:rgb(247, 182, 122);
+  background-size: 200%;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: .5s;
+}
+.btn:hover{
+  background-position: right;
 }
 
-.container.right-panel-active .overlay-left {
-  transform: translateX(0);
+
+@media screen and (max-width: 1050px){
+  .container{
+    grid-gap: 5rem;
+  }
 }
 
-.overlay-right {
-  right: 0;
-  transform: translateX(0);
+@media screen and (max-width: 1000px){
+  form{
+    width: 290px;
+  }
+
+  .login-content h2{
+        font-size: 2.4rem;
+        margin: 8px 0;
+  }
+
+  .img img{
+    width: 400px;
+  }
 }
 
-.container.right-panel-active .overlay-right {
-  transform: translateX(20%);
-}
+@media screen and (max-width: 900px){
+  .container{
+    grid-template-columns: 1fr;
+  }
 
-.social-container {
-  margin: 20px 0;
-}
+  .img{
+    display: none;
+  }
 
-.social-container a {
-  border: 1px solid #DDDDDD;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
-  width: 40px;
-}
+  .wave{
+    display: none;
+  }
 
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
+  .login-content{
+    justify-content: center;
+  }
 }
 </style>
 </head>
 <body>
-<div class="container" id="container">
-  <div class="form-container sign-up-container">
-    <form action="#">
-      <h1>계정 만들기</h1>
-      <br><br>
-      <input type="text" placeholder="Name" />
-      <input type="text" placeholder="ID" />
-      <input type="password" placeholder="Password" />
-      <input type="text" placeholder="Email" />
-      <br><br>
-      <button>회원가입</button>
-    </form>
-  </div>
-  <div class="form-container sign-in-container">
-    <form action="#">
-      <h1>로그인</h1>
-      <br><br>
-      <div style="font-size: smaller; color: #DDDDDD;">간편 로그인</div>
-      <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <a href="#">아이디/비밀번호 찾기</a>
-      <button>로그인</button>
-    </form>
-  </div>
-  <div class="overlay-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        <h1>당신을 환영합니다!</h1>
-        <br><br><br>
-        <button class="ghost" id="signIn">로그인</button>
-      </div>
-      <div class="overlay-panel overlay-right">
-        <h2>환영합니다 어서오세요!</h2>
-        <p>아직 회원이 아니신가요?</p>
-        <button class="ghost" id="signUp">회원가입</button>
-      </div>
-    </div>
-  </div>
-</div>
 <script>
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+const inputs = document.querySelectorAll(".input");
 
-signUpButton.addEventListener('click', () => {
-  container.classList.add("right-panel-active");
-});
 
-signInButton.addEventListener('click', () => {
-  container.classList.remove("right-panel-active");
+function addcl()
+{
+  let parent = this.parentNode.parentNode;
+  parent.classList.add("focus");
+}
+function remcl()
+{
+  let parent = this.parentNode.parentNode;
+  if(this.value == ""){
+    parent.classList.remove("focus");
+  }
+}
+inputs.forEach(input => {
+  input.addEventListener("focus", addcl);
+  input.addEventListener("blur", remcl);
 });
-</script>
+  </script>
+  <img class="wave" src="/FinalProject/resources/image/wave.png">
+  <div class="container">
+      <div class="img">
+        <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
+      </div>
+      <div class="login-content">
+        <form>
+          <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
+          <h2 class="title">Welcome</h2>
+          <div class="div">
+            <h3>DevHelper</h3>
+          </div>
+          <input type="submit" class="btn" value="github Login">
+        </form>
+      </div>
+  </div>
+    
 </body>
 </html>
