@@ -20,6 +20,11 @@
 				font-style: normal;
 			}
 
+			html {
+				overflow-y: scroll;
+				/* Forces vertical scrollbar */
+			}
+
 			body * {
 				font-family: 'GangwonEdu_OTFBoldA';
 				font-weight: normal;
@@ -31,7 +36,7 @@
 				height: 70px;
 				background-color: antiquewhite;
 				align-items: center;
-				position: sticky;
+				position: relative;
 				top: 15px;
 				font-size: 20px;
 				margin: auto;
@@ -85,11 +90,15 @@
 
 			.outer {
 				position: relative;
-				width: 100%;
+				width: 98vw;
 				height: auto;
-				border-radius: 4px;
+				border-radius: 10px;
 				margin: 10px auto;
 				overflow: hidden;
+				padding: 5px;
+				display: flex;
+				flex-direction: column;
+				transition: .3s;
 			}
 
 			.outer::before {
@@ -141,7 +150,7 @@
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
-				<div class="menuEls" onclick="toCommunity()">홈</div>
+				<div class="menuEls" onclick="toCommunity()">HOME</div>
 				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
 				<div class="menuEls">코딩테스트</div>
 				<div class="menuEls">취업관련</div>
@@ -181,7 +190,7 @@
 			function toCommunity() {
 				location.href = "searchNews"
 			}
-			
+
 			function toCodeTyping() {
 				const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
 			}
