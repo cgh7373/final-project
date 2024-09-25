@@ -8,5 +8,7 @@
 </head>
 <body>
 	<jsp:include page="common/menubar.jsp" />
+	여기는 메인
+	
 </body>
 </html>
