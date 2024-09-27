@@ -183,7 +183,7 @@
           <td>선비구함</td>
           <td>경력</td>
           <td>정규직 제주도</td>
-          <td><span class="material-symbols-outlined">favorite</span></td>
+          <td><span class="material-symbols-outlined favorite">favorite</span></td>
         </tr>
       </tbody>
     </table>
