@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<!DOCTYPE html>
 	<html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<!-- <script defer src="resources/js/newsApi.js"></script> 이거 나중에 spring으로 -->
 		<link rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+			integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+			crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+			integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<style>
 			@font-face {
 				font-family: 'GangwonEdu_OTFBoldA';
@@ -144,6 +151,21 @@
 	</head>
 
 	<body>
+	
+		<c:if test="${ not empty alertMsg }">
+			<script>
+				toastr.success("${alertMsg}");
+			</script>
+			<c:remove var="alertMsg"/>
+		</c:if>	
+		
+		<c:if test="${ not empty errorMsg }">
+			<script>
+				toastr.error("${errorMsg}");
+			</script>
+			<c:remove var="errorMsg"/>
+		</c:if>	
+		<!-- info랑 warning도 있음 -->
 
 		<header>
 			<img class="project_name" src="resources/image/logo-removebg-preview.png" onclick="toMain()" />
@@ -153,9 +175,15 @@
 				<div class="menuEls" onclick="toCommunity()">HOME</div>
 				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
 				<div class="menuEls">코딩테스트</div>
+<<<<<<< HEAD
 				<div class="menuEls">커뮤니티</div>
 				<div class="menuEls" onclick="location.href='work.wo'">취업관련</div>
 			</div>
+=======
+				<div class="menuEls">취업관련</div>
+				<div class="menuEls">게시판</div>
+			</div>`
+>>>>>>> 6e7c26399d28ee563b0b75ed40945ba581d9e12e
 
 			<div class="about_user">
 				<span class="material-icons" onclick="toCodeTyping()">description</span>
@@ -168,7 +196,10 @@
 		</div>
 
 		<script>
-
+			toastr.options = {
+				"progressBar": true,
+				"timeOut": "1800",
+			}
 			const menuEls = document.querySelectorAll('.menuEls');
 			const menuSlide = document.querySelector('.menuSlide');
 			let currentIndex = 0;
