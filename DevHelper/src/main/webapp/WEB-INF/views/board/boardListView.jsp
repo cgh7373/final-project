@@ -45,9 +45,10 @@
 					}
 
 					& #language {
-						height: 25px;
+						height: 30px;
 						background-color: white;
 						font-size: 18px;
+						border-radius: 5px;
 					}
 
 					& #radios {
@@ -69,7 +70,35 @@
 
 				#boardList {
 					width: 100%;
-					height: 70%;
+					height: 700px;
+					display: flex;
+					flex-wrap: wrap;
+					gap: 1%;
+
+					& .boards {
+						width: 32.5%;
+						height: 48%;
+						border-radius: 10px;
+						overflow: hidden;
+						border: 1px solid #000;
+
+						& .thumbnail {
+							width: 100%;
+							height: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							border: 1px solid #ccc;
+							background-color: #f9f9f9;
+
+							& .language-js {
+								width: 100%;
+								height: 100%;
+								display: block;
+								overflow: auto;
+							}
+						}
+					}
 				}
 
 				#pagingArea {
@@ -117,7 +146,57 @@
 					<div class="boards">
 						<div class="thumbnail">
 
+							<code class="language-js">const hello = 'Hello, world!';</code>
 
+						</div>
+						<div class="title"></div>
+						<div class="count"></div>
+						<div class="date"></div>
+					</div>
+					<div class="boards">
+						<div class="thumbnail">
+
+							<code class="language-js">const hello = 'Hello, world!';</code>
+
+						</div>
+						<div class="title"></div>
+						<div class="count"></div>
+						<div class="date"></div>
+					</div>
+					<div class="boards">
+						<div class="thumbnail">
+
+							<code class="language-js">const hello = 'Hello, world!';</code>
+
+						</div>
+						<div class="title"></div>
+						<div class="count"></div>
+						<div class="date"></div>
+					</div>
+					<div class="boards">
+						<div class="thumbnail">
+
+							<code class="language-js">const hello = 'Hello, world!';</code>
+
+						</div>
+						<div class="title"></div>
+						<div class="count"></div>
+						<div class="date"></div>
+					</div>
+					<div class="boards">
+						<div class="thumbnail">
+
+							<code class="language-js">const hello = 'Hello, world!';</code>
+
+						</div>
+						<div class="title"></div>
+						<div class="count"></div>
+						<div class="date"></div>
+					</div>
+					<div class="boards">
+						<div class="thumbnail">
+
+							<code class="language-js">const hello = 'Hello, world!';</code>
 
 						</div>
 						<div class="title"></div>
@@ -126,6 +205,7 @@
 					</div>
 
 				</div>
+
 
 				<div id="pagingArea">
 					<ul class="pagination">
