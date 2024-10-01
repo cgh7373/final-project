@@ -175,7 +175,7 @@
 				<div class="menuEls" onclick="toCommunity()">HOME</div>
 				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
 				<div class="menuEls">코딩테스트</div>
-				<div class="menuEls">취업관련</div>
+				<div class="menuEls" onclick="location.href='list.wo'">취업관련</div>
 				<div class="menuEls">게시판</div>
 			</div>`
 

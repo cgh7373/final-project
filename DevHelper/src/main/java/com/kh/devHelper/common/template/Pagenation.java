@@ -1,6 +1,6 @@
-package com.kh.spring.common.template;
+package com.kh.devHelper.common.template;
 
-import com.kh.spring.common.model.vo.PageInfo;
+import com.kh.devHelper.common.model.vo.PageInfo;
 
 public class Pagenation {
 	

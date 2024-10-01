@@ -175,15 +175,9 @@
 				<div class="menuEls" onclick="toCommunity()">HOME</div>
 				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
 				<div class="menuEls">코딩테스트</div>
-<<<<<<< HEAD
 				<div class="menuEls">커뮤니티</div>
 				<div class="menuEls" onclick="location.href='work.wo'">취업관련</div>
 			</div>
-=======
-				<div class="menuEls">취업관련</div>
-				<div class="menuEls">게시판</div>
-			</div>`
->>>>>>> 6e7c26399d28ee563b0b75ed40945ba581d9e12e
 
 			<div class="about_user">
 				<span class="material-icons" onclick="toCodeTyping()">description</span>
