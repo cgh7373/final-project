@@ -2,7 +2,7 @@ package com.kh.devHelper.common.template;
 
 import com.kh.devHelper.common.model.vo.PageInfo;
 
-public class Pagenation {
+public class Pagination {
 	
 	public static PageInfo getPageInfo(int listCount, int currentPage, int pageLimit, int boardLimit) {
 		

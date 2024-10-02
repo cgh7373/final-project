@@ -168,20 +168,20 @@
 		<!-- info랑 warning도 있음 -->
 
 		<header>
-			<img class="project_name" src="resources/image/logo-removebg-preview.png" onclick="toMain()" />
+			<img class="project_name" src="resources/image/logo-removebg-preview.png" onclick="toThe('toMain')" />
 
 			<div class="menubar">
 				<div class="menuSlide"></div>
-				<div class="menuEls" onclick="toCommunity()">HOME</div>
-				<div class="menuEls" onclick="toProjectMain()">프로젝트관리</div>
+				<div class="menuEls" onclick="toThe('searchNews')">HOME</div>
+				<div class="menuEls" onclick="toThe('projectMain')">프로젝트관리</div>
 				<div class="menuEls">코딩테스트</div>
-				<div class="menuEls" onclick="location.href='list.wo'">취업관련</div>
-				<div class="menuEls">게시판</div>
+				<div class="menuEls">취업관련</div>
+				<div class="menuEls" onclick="toThe('list.bo')">게시판</div>
 			</div>`
 
 			<div class="about_user">
 				<span class="material-icons" onclick="toCodeTyping()">description</span>
-				<span class="material-symbols-outlined" onclick="loginUser()">login</span>
+				<span class="material-symbols-outlined" onclick="toThe('login.me')">login</span>
 			</div>
 		</header>
 
@@ -208,25 +208,13 @@
 			document.querySelector('.menubar').addEventListener('mouseleave', () => {
 				menuSlide.style.transform = `translate(\${currentIndex * 100}%, 105%)`;
 			});
-
-			function toMain() {
-				location.href = "toMain"
-			}
-
-			function toCommunity() {
-				location.href = "searchNews"
+			
+			function toThe(url) {
+				location.href = url;
 			}
 
 			function toCodeTyping() {
-				const newWindow = window.open('http://localhost:8234/FinalProject/react-app/index.html', '_blank', 'width=800,height=1000');
-			}
-
-			function loginUser() {
-				location.href = "login.me";
-			}
-
-			function toProjectMain() {
-				location.href = "projectMain"
+				const newWindow = window.open("openMonaco", '_blank', 'width=800,height=1000');
 			}
 
 			const icons = document.querySelectorAll('.about_user span');
