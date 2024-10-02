@@ -21,5 +21,23 @@
 		  from
 		       board
 	</select>
+	
+	<insert id="insertBoard">
+		insert
+		  into board
+		  	 (
+		  	   board_no
+		  	 , code
+		  	 , board_title
+		  	 , board_content
+		  	 )
+		values
+		     (
+		       seq_bno.nextval
+		     , #{code}
+		     , #{boardTitle}
+		     , #{boardContent}
+		     )
+	</insert>
 
 </mapper>

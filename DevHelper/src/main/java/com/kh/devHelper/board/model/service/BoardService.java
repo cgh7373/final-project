@@ -9,5 +9,5 @@ public interface BoardService {
 
 	int selectListCount();
 	ArrayList<Board> selectList(PageInfo pi);
-	
+	int insertBoard(Board b);
 }

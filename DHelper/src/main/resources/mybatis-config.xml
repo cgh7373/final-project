@@ -7,8 +7,8 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.kh.devHelper.member.model.vo.Member" alias="Member"/>
-		<typeAlias type="com.kh.devHelper.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.kh.dh.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.dh.board.model.vo.Board" alias="Board"/>
 	</typeAliases>
 	
 	 <mappers>

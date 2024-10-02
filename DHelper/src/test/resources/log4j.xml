@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.kh.devHelper">
+	<logger name="com.kh.dh">
 		<level value="info" />
 	</logger>
 	

@@ -2,29 +2,37 @@ package com.kh.devHelper.member.model.vo;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @NoArgsConstructor
-@Setter
+@AllArgsConstructor
 @Getter
+@Setter
 @ToString
 public class Member {
 	
-	
-	private int userNo;
-	private String userId;
-	private String userPwd;
-	private String userName;
-	private String email;
-	private String birthday;
-	private String gender;
-	private String phone;
-	private String address;
-	private Date enrollDate;
-	private Date modifyDate;
+	private int memNo;
+	private String memId;
+	private String memToken;
+	private String gitNick; 
+	private String profile; 
+	private String type; 
+	private String bio; 
+	private String memIntro;
+	private String stackName;
+	private Date createDate;
 	private String status;
-
+	private int team;  
+	private String teamStatus; 
+	private String proWriter;	
+	
+	public Member(String gitNick, String profile) {
+		this.gitNick = gitNick;
+		this.profile = profile;
+	}
+	
 }
