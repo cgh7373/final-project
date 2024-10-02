@@ -15,8 +15,8 @@ local.properties
 .recommenders
 .target/
 /Servers/
-/DevHelper/
-/FinalProject/
+DevHelper/
+FinalProject/
 
 # ignore properties file
 config.properties
