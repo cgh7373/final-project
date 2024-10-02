@@ -37,6 +37,21 @@
 		      , #{profile}
 		    )
 	</insert>
+	<select id="selectMember" resultMap="memberResult">
+		select 
+		        git_nick
+		      , mem_id
+		      , mem_intro
+		      , stack_name
+		      , create_date
+		      , status
+		      , mem_no
+		      , team
+		      , team_status
+		      , profile
+		  from member
+		  where mem_id = #{memId}
+	</select>
 </mapper>
 
 

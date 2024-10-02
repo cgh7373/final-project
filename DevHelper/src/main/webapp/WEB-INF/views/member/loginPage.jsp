@@ -223,7 +223,7 @@ inputs.forEach(input => {
   input.addEventListener("blur", remcl);
 });
   </script>
-  <img class="wave" src="/FinalProject/resources/image/wave.png">
+  <img class="wave" src="${pageContext.request.contextPath}/resources/image/wave.png">
   <div class="container">
       <div class="img">
         <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
