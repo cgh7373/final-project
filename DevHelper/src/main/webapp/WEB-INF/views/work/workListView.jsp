@@ -12,7 +12,7 @@
 
   <style>
     body {
-      height: 2000px;
+      height: 1500px;
     }
 
     .material-symbols-outlined {
@@ -44,13 +44,12 @@
       align-items: center;
       gap: 10px;
       display: none;
-      /* Initially hidden */
     }
 
     .search-bar input {
       padding: 10px;
       font-size: 20px;
-      width: 350px;
+      width: 500px;
     }
 
     .search-bar button {
@@ -66,8 +65,15 @@
     }
 
     .list-area {
+      table-layout: fixed;
       width: 1300px;
       margin: 0 auto;
+    }
+    .list-area td {
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    max-width: 150px; 
     }
 
     thead {
@@ -138,18 +144,19 @@
     <div class="search-bar" id="search-bar">
       <span class="material-symbols-outlined">search</span>
       <input type="text" name="keyword" placeholder="검색어를 입력하세요">
-      <input type="text" name="place" placeholder="지역을 선택해주세요">
-      <input type="text" name="job" placeholder="직무를 선택해주세요">
+      <input type="text" name="job" placeholder="희망 분야를 선택해주세요">
       <button>찾기</button>
       <span class="material-symbols-outlined" id="close-btn">close</span>
     </div>
+    
+
 
     <div class="search-icon-only" id="search-icon-only">
       <span class="material-symbols-outlined">search</span>
     </div>
   </div>
 
-  <div class="workInfo" align="center">
+  <div class="workInfo" align="center" >
     <table class="list-area" id = "result1">
       <thead>
         <tr>
@@ -181,7 +188,6 @@
 			data:{pageNo:page, numOfRows:pageSize},
 			success:function(data){
 				console.log(data);
-				
 				let items = data.result;
 				let html = "";
 				
@@ -199,6 +205,8 @@
 				});
 				
 				$("#result1 tbody").html(html);	
+
+        		$("#currentPage").text(currentPage);
 			},
 			error:function(){
 				console.log("API AJAX에러")
@@ -206,17 +214,10 @@
 		})
 	}
   
-  $("#nextPage").click(function() {
-	currenPage++;
-	loadData(currentPage);
-	});
-
-$("#prevPage").click(function() {
-    if (currentPage > 1) {
-      currentPage--;
-      loadData(currentPage);
-    }
+  $(document).on("click", "#result1>tbody>tr", function() {
+      location.href = "detail.wo"; 
   });
+  
   </script>
 
   
@@ -246,6 +247,20 @@ $("#prevPage").click(function() {
     <button id="currentPage">1</button>
     <button id="nextPage">Next</button>
   </div>
+  <script>
+  $("#nextPage").click(function() {
+    currentPage++;
+    loadData(currentPage);
+    });
+
+  $("#prevPage").click(function() {
+      if (currentPage > 1) {
+        currentPage--;
+        loadData(currentPage);
+      }
+    });
+
+  </script>
 </body>
 
 </html>

@@ -19,10 +19,12 @@ public class APIcontroller {
 	@ResponseBody
 	@RequestMapping(value="work.wo", produces = "application/json; charset=utf-8")
 	public String employAPI(@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="numOfRows",defaultValue="15")int numOfRows) throws IOException {
+		
 		String url = "https://apis.data.go.kr/1051000/recruitment/list";
 		url += "?serviceKey=" + serviceKey;
-		url += "&numOfRows=" + numOfRows;
+		url += "&numOfRows=15";
 		url += "&pageNo=" + pageNo;
+		url += "&workRgnLst=R3010"; // 근무지 서울포함으로 한정
 		
 		URL requestUrl = new URL(url);
 		HttpURLConnection urlConnection = (HttpURLConnection)requestUrl.openConnection();

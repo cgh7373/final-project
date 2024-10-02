@@ -19,6 +19,7 @@ public class WorkController {
 	@Autowired
 	private WorkServiceImpl wService;
 	
+	// 페이징처리 쓸데있으면 쓰기
 	@RequestMapping()
 	private ModelAndView selectList(@RequestParam(value = "cpage",defaultValue = "1")int currentPage, ModelAndView mv) {
 		int listCount = wService.selectListCount();
@@ -26,15 +27,22 @@ public class WorkController {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
 		ArrayList<Work>list = wService.selectList(pi);
 		
-		mv.addObject("pi",pi).addObject("list",list).setViewName("work/workListView");
+		mv.addObject("pi",pi).addObject("list",list);
 		
 		return mv;
 		
 	}
 	
+	// 채용공고목록 페이지로 이동
 	@RequestMapping("list.wo")
 	private String ToListView() {
 		return "work/workListView";
+	}
+	
+	// 상세채용공고로 이동
+	@RequestMapping("detail.wo")
+	private String TodetailView() {
+		return "work/workDetailView";
 	}
 	
 	
