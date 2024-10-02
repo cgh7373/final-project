@@ -12,7 +12,7 @@
 
   <style>
     body {
-      height: 1500px;
+      height: 2000px;
     }
 
     .material-symbols-outlined {
@@ -134,7 +134,6 @@
 
   <div class="title" align="center">채용 공고 확인하기</div>
 
-	<button id="btn1">버튼</button>
   <div class="search-bar-container">
     <div class="search-bar" id="search-bar">
       <span class="material-symbols-outlined">search</span>
@@ -166,58 +165,62 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>국립공원공단</td>
-          <td>~~구함</td>
-          <td>2024-10-18</td>
-          <td>전기</td>
-          <td>정규직</td>
-          <td>신입+경력</td>
-          <td>서울</td>
-          <td>
-          <i class="fas fa-solid fa-heart"></i>
-          <span class="material-symbols-outlined favorite">favorite</span>
-          </td>
-        </tr>
-        
-         <tr>
-          <td>국립공원공단</td>
-          <td>~~구함</td>
-          <td>2024-10-18</td>
-          <td>전기</td>
-          <td>정규직</td>
-          <td>신입+경력</td>
-          <td>서울</td>
-          <td>
-          <i class="fas fa-solid fa-heart"></i>
-          <span class="material-symbols-outlined favorite">favorite</span>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
   <script>
-  	$(function() {
-  		$("#btn1").click(function() {
-  			$.ajax({
-  				url:"work.wo",
-  				data:{},
-  				success:function(data){
-  					console.log(data)
-  				},error:function(){
-  					console.log("통신실패");
-  				}
-  			})
-			
-		})
-		
-	})
+  let currentPage = 1;
+  let pageSize = 15;
+  $(function(){
+	  loadData(currentPage);
+  });
   
+  function loadData(page){
+		$.ajax({
+			url:"work.wo",
+			data:{pageNo:page, numOfRows:pageSize},
+			success:function(data){
+				console.log(data);
+				
+				let items = data.result;
+				let html = "";
+				
+				$.each(items,function(index,job){
+					 html += "<tr>";
+			          html += "<td>" + job.instNm + "</td>";
+			          html += "<td>" + job.recrutPbancTtl + "</td>";
+			          html += "<td>" + job.pbancEndYmd + "</td>";
+			          html += "<td>" + job.ncsCdNmLst + "</td>";
+			          html += "<td>" + job.hireTypeNmLst + "</td>";
+			          html += "<td>" + job.recrutSeNm + "</td>";
+			          html += "<td>" + job.workRgnNmLst + "</td>";
+			          html += "<td><span class='material-symbols-outlined favorite'>favorite</span></td>";
+			          html += "</tr>";
+				});
+				
+				$("#result1 tbody").html(html);	
+			},
+			error:function(){
+				console.log("API AJAX에러")
+			}
+		})
+	}
+  
+  $("#nextPage").click(function() {
+	currenPage++;
+	loadData(currentPage);
+	});
+
+$("#prevPage").click(function() {
+    if (currentPage > 1) {
+      currentPage--;
+      loadData(currentPage);
+    }
+  });
   </script>
 
   
   <button id="back-to-top"><span class="material-symbols-outlined">arrow_upward</span></button>
-
   <script>
     $(document).ready(function () {
       
@@ -237,6 +240,12 @@
         });
       });
   </script>
+
+  <div id="pagination" style="text-align: center; margin-top: 20px;">
+    <button id="prevPage">Prev</button>
+    <button id="currentPage">1</button>
+    <button id="nextPage">Next</button>
+  </div>
 </body>
 
 </html>

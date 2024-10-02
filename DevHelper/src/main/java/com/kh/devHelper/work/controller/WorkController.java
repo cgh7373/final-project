@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.devHelper.common.model.vo.PageInfo;
-import com.kh.devHelper.common.template.Pagenation;
+import com.kh.devHelper.common.template.Pagination;
 import com.kh.devHelper.work.model.service.WorkServiceImpl;
 import com.kh.devHelper.work.model.vo.Work;
 
@@ -23,7 +23,7 @@ public class WorkController {
 	private ModelAndView selectList(@RequestParam(value = "cpage",defaultValue = "1")int currentPage, ModelAndView mv) {
 		int listCount = wService.selectListCount();
 		
-		PageInfo pi = Pagenation.getPageInfo(listCount, currentPage, 10, 10);
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 10);
 		ArrayList<Work>list = wService.selectList(pi);
 		
 		mv.addObject("pi",pi).addObject("list",list).setViewName("work/workListView");

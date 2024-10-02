@@ -8,6 +8,7 @@ import java.net.URL;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -17,16 +18,17 @@ public class APIcontroller {
 
 	@ResponseBody
 	@RequestMapping(value="work.wo", produces = "application/json; charset=utf-8")
-	public String employAPI() throws IOException {
+	public String employAPI(@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="numOfRows",defaultValue="15")int numOfRows) throws IOException {
 		String url = "https://apis.data.go.kr/1051000/recruitment/list";
 		url += "?serviceKey=" + serviceKey;
-		url += "&numOfRows=15";
+		url += "&numOfRows=" + numOfRows;
+		url += "&pageNo=" + pageNo;
 		
 		URL requestUrl = new URL(url);
 		HttpURLConnection urlConnection = (HttpURLConnection)requestUrl.openConnection();
 		urlConnection.setRequestMethod("GET");
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+		BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
 		
 		String responseText="";
 		String line;
