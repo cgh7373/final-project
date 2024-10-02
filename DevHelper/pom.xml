@@ -23,7 +23,14 @@
 			<url>https://packages.atlassian.com/maven-3rdparty/</url>
 		</repository>
 	</repositories>
-	
+	<!-- 스프링 버젼 확인 -->
+	<parent>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-parent</artifactId>
+       <version>2.5.6</version> <!-- 버전이 최신인지 확인 -->
+       <relativePath/> <!-- lookup parent from repository -->
+   	</parent>
+   	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -210,12 +217,25 @@
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version>
 		</dependency>
+
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
 		    <artifactId>gson</artifactId>
 		    <version>2.8.5</version>
 		</dependency>
 		  
+
+		<!-- 로그인 관련 -->
+		 <dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.12.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
 		     
 	</dependencies>
 	

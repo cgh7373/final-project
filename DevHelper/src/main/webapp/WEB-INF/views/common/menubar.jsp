@@ -130,7 +130,7 @@
 				display: flex;
 				right: 2%;
 				height: 100%;
-				width: 4%;
+				width: 10%;
 				border-radius: 10px;
 				gap: 20px;
 			}
@@ -149,6 +149,13 @@
 				width: 60%;
 				height: 100%;
 				text-align: center;
+				align-items: center;
+			}
+			.about_user div img
+			{
+				width: 45%;
+				height: 50%;
+				border-radius: 50%;
 			}
 		</style>
 	</head>
@@ -184,7 +191,14 @@
 
 			<div class="about_user">
 				<span class="material-icons" onclick="toCodeTyping()">description</span>
-				<span class="material-symbols-outlined" onclick="toThe('login.me')">login</span>
+				<c:choose>
+					<c:when test="${not empty loginMember}">
+						<div><img src="${loginMember.profile}"> ${loginMember.gitNick}</div>
+					</c:when>
+					<c:otherwise>						
+						<span class="material-symbols-outlined" onclick="toThe('login.me')">login</span>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</header>
 
