@@ -6,9 +6,6 @@
 		<head>
 			<meta charset="UTF-8">
 			<title>Insert title here</title>
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism-java.min.js"></script>
 			<style>
 				.outer {
 					width: 100vw;
@@ -45,10 +42,11 @@
 					}
 
 					& #language {
-						height: 30px;
+						height: 25px;
 						background-color: white;
-						font-size: 18px;
+						font-size: 16px;
 						border-radius: 5px;
+						line-height: 20px;
 					}
 
 					& #radios {
@@ -70,7 +68,7 @@
 
 				#boardList {
 					width: 100%;
-					height: 700px;
+					height: 735px;
 					display: flex;
 					flex-wrap: wrap;
 					gap: 1%;
@@ -84,12 +82,25 @@
 
 						& .thumbnail {
 							width: 100%;
-							height: 100%;
+							height: 94%;
 							display: flex;
 							align-items: center;
 							justify-content: center;
-							border: 1px solid #ccc;
-							background-color: #f9f9f9;
+							position: relative;
+
+							& .answerMark {
+								position: absolute;
+								width: 30px;
+								height: 30px;
+								background-color: rgb(241, 239, 107);
+								right: 0;
+								top: 0;
+								border-left: 1px solid #000;
+								border-bottom: 1px solid #000;
+								display: flex;
+								justify-content: center;
+								line-height: 33px;
+							}
 
 							& .language-js {
 								width: 100%;
@@ -98,12 +109,37 @@
 								overflow: auto;
 							}
 						}
+
+						& .underBoard {
+							width: 100%;
+							height: 6%;
+							display: flex;
+							align-items: center;
+							position: relative;
+							justify-content: space-between;
+							background-color: #fff;
+
+							& .underBoardInfo {
+								display: flex;
+								align-items: center;
+								gap: 3%;
+								height: 100%;
+								width: 30%;
+								justify-content: end;
+							}
+						}
 					}
 				}
 
 				#pagingArea {
 					width: 100%;
 					height: 10%;
+
+					& .pagination {
+						display: flex;
+						gap: 1%;
+						justify-content: center;
+					}
 				}
 			</style>
 		</head>
@@ -117,7 +153,7 @@
 				<div id="sortingBar">
 					<!-- 이거 나중에 not empty로 수정 -->
 					<c:if test="${empty loginUser}">
-						<button>게시글 작성</button>
+						<button onclick="toEnroll();">게시글 작성</button>
 					</c:if>
 
 					<div id="languages"> 사용언어
@@ -145,13 +181,16 @@
 
 					<div class="boards">
 						<div class="thumbnail">
-
 							<code class="language-js">const hello = 'Hello, world!';</code>
-
+							<div class="answerMark">🏆</div>
 						</div>
-						<div class="title"></div>
-						<div class="count"></div>
-						<div class="date"></div>
+						<div class="underBoard">
+							<div class="title">제목</div>
+							<div class="underBoardInfo">
+								<div class="count">조회수</div>
+								<div class="date">작성일</div>
+							</div>
+						</div>
 					</div>
 					<div class="boards">
 						<div class="thumbnail">
@@ -239,6 +278,13 @@
 				</div>
 
 			</div>
+
+			<script>
+				function toEnroll() {
+					location.href = "enrollForm.bo";
+				}
+
+			</script>
 
 		</body>
 

@@ -10,6 +10,9 @@
 		<link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism-java.min.js"></script>
 		<!-- <script defer src="resources/js/newsApi.js"></script> 이거 나중에 spring으로 -->
 		<link rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -156,7 +159,7 @@
 			<script>
 				toastr.success("${alertMsg}");
 			</script>
-			<c:remove var="alertMsg"/>
+			<c:remove var="alertMsg" />
 		</c:if>	
 		
 		<c:if test="${ not empty errorMsg }">

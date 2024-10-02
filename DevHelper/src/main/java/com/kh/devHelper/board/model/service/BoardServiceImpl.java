@@ -29,5 +29,10 @@ public class BoardServiceImpl implements BoardService {
 		return bd.selectList(sst,pi);
 	}
 
+	@Override
+	public int insertBoard(Board b) {
+		return bd.insertBoard(sst, b);
+	}
+
 
 }
