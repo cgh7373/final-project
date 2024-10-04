@@ -5,158 +5,82 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
 <style>
-  body {
-    margin-top: 20px;
-    background-color: #eee;
+  .repoList{
+    border: 1px solid black;
+    margin: auto;
+    width: 80%;
   }
-  .project-list-table {
-    border-collapse: separate;
-    border-spacing: 0 12px;
+  .repoTable{
+    border: 1px solid gray;
+    margin: auto;
+    width: 100%;
   }
-
-  .project-list-table tr {
-    background-color: #fff;
+  #repoHead{
+    height: 50px;
+    font-size: 24px;
   }
-
-  .table-nowrap td,
-  .table-nowrap th {
-    white-space: nowrap;
-  }
-  .table-borderless > :not(caption) > * > * {
-    border-bottom-width: 0;
-  }
-  .table > :not(caption) > * > * {
-    padding: 0.75rem 0.75rem;
-    background-color: var(--bs-table-bg);
-    border-bottom-width: 1px;
-    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
-  }
-
-  .avatar-sm {
-    height: 2rem;
-    width: 2rem;
-  }
-  .rounded-circle {
-    border-radius: 50% !important;
-  }
-  .me-2 {
-    margin-right: 0.5rem !important;
-  }
-  img,
-  svg {
-    vertical-align: middle;
-  }
-
-  a {
-    color: #3b76e1;
-    text-decoration: none;
-  }
-
-  .badge-soft-danger {
-    color: #f56e6e !important;
-    background-color: rgba(245, 110, 110, 0.1);
-  }
-  .badge-soft-success {
-    color: #63ad6f !important;
-    background-color: rgba(99, 173, 111, 0.1);
-  }
-
-  .badge-soft-primary {
-    color: #3b76e1 !important;
-    background-color: rgba(59, 118, 225, 0.1);
-  }
-
-  .badge-soft-info {
-    color: #57c9eb !important;
-    background-color: rgba(87, 201, 235, 0.1);
-  }
-
-  .outer{
+  #repoBody{
     text-align: center;
   }
-  .row{
-    padding-left: 500px;
+  #repoBody tr{
+    height: 70px;
+    cursor: pointer;
   }
-
-  tbody{
-    width: 1000px;
-    height: 715px;
-  }
+  #repoBody tr:hover{
+    background-color: rgba(155, 155, 155, 0.3)
+  }  
+  
 </style>
 </head>
 <body>
-<jsp:include page="../common/menubar.jsp" />
-<div class="outer">
-      <div class="row">
-          <table class="table project-list-table table-nowrap align-middle table-borderless">
-
-            <thead>
-              <tr>
-                <th scope="col" class="ps-4" style="width: 50px">
-                  <div class="form-check font-size-16">
-                    <input type="checkbox" class="form-check-input" id="contacusercheck"/>
-                    <label class="form-check-label" for="contacusercheck" ></label>
-                  </div>
-                </th>
-                <th scope="col">Name</th>
-                <th scope="col">Position</th>
-                <th scope="col">Email</th>
-                <th scope="col">Projects</th>
-                <th scope="col" style="width: 200px">Action</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <th scope="row" class="ps-4">
-                  <div class="form-check font-size-16">
-                    <input type="checkbox" class="form-check-input" id="contacusercheck1" />
-                    <label class="form-check-label" for="contacusercheck1" ></label>
-                  </div>
-                </th>
-                <td>
-                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" />
-                  <a href="#" class="text-body">Simon Ryles</a>
-                </td>
-                <td>
-                  <span class="badge badge-soft-success mb-0" >Full Stack Developer</span>
-                </td>
-                <td>SimonRyles@minible.com</td>
-                <td>125</td>
-                <td>1</td>
-              </tr>
-
-
-              <tr>
-                <th scope="row" class="ps-4">
-                  <div class="form-check font-size-16">
-                    <input type="checkbox" class="form-check-input" id="contacusercheck2" />
-                    <label class="form-check-label" for="contacusercheck2"></label>
-                  </div>
-                </th>
-
-                <td>
-                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" />
-                  <a href="#" class="text-body">Marion Walker</a>
-                </td>
-
-                <td>
-                  <span class="badge badge-soft-info mb-0" >Frontend Developer</span>
-                </td>
-
-                <td>MarionWalker@minible.com</td>
-                <td>132</td>
-                <td>1</td>
-              </tr>
-
-            </tbody>
-
-          </table>
+  <jsp:include page="../common/menubar.jsp" />
+  <div class="outer">
+      <div class="repoList">
+        <table border="1" class="repoTable">
+          <thead id="repoHead">
+            <tr>
+              <th>아이콘</th>
+              <th>이름</th>
+              <th>공개범위</th>
+              <th>기타</th>
+            </tr>
+          </thead>
+          <tbody id="repoBody">
+            <tr>
+              <td>사진</td>
+              <td>TestRe</td>
+              <td>private</td>
+              <td>
+                <button>초대</button>
+                <button>삭제</button>
+              </td>
+            </tr>
+            <tr>
+              <td>사진</td>
+              <td>TestRe</td>
+              <td>private</td>
+              <td>
+                <button>초대</button>
+                <button>삭제</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+  </div>
+
+  <script>
+    $(function(){
+      $("#repoBody tr").click(function(){
+        location.href="repoDetail.re";
+      })
+    })
+
+  </script>
 
 </body>
 </html>
