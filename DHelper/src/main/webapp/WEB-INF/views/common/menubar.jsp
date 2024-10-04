@@ -124,39 +124,100 @@
 				opacity: 0.2;
 				z-index: -1;
 			}
-
+			/*로그인 안했을때*/
 			.about_user {
 				position: absolute;
 				display: flex;
-				right: 2%;
+				right: 1%;
 				height: 100%;
-				width: 10%;
+				width: 5%;
 				border-radius: 10px;
-				gap: 20px;
 			}
-
 			.about_user span {
-				width: 40%;
 				height: 100%;
+				width : 50%;
 				font-size: 35px;
 				line-height: 200%;
 				cursor: pointer;
 				transition: .2s;
 			}
-
-			.about_user div {
-				font-size: large;
-				width: 60%;
-				height: 100%;
-				text-align: center;
-				align-items: center;
-			}
-			.about_user div img
+			/*로그인 했을때*/
+			.about_login_user
 			{
-				width: 45%;
-				height: 50%;
-				border-radius: 50%;
+				position: absolute;
+				display: flex;
+				right: 0%;
+				height: 100%;
+				width: 15%;
+				border-radius: 10px;
 			}
+			.about_login_user span
+			{
+				height: 100%;
+				font-size: 35px;
+				line-height: 200%;
+				cursor: pointer;
+				transition: .2s;
+				box-sizing: border-box;
+			}
+			.about_login_user .login_user2
+			{
+				font-size: 25px;
+				margin-top:6%;
+			}
+			.about_login_user .login_user2 a:hover
+			{
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			.about_login_user .login_user2 img
+			{
+				width: 32px;
+				height: 32px;
+			}
+			/*로그인 후 개인 menu*/
+		    .dropdown-menu {
+		        display: none; /* 기본적으로 감춤 */
+		        position: absolute;
+		        background-color: #f9f9f9;
+		        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+		        z-index: 1;
+		        width: 150px;
+		        top: 100%; /* 부모 요소 높이에 대한 100% 아래에서 시작 */
+		        left: 15%;
+		        opacity: 0; /* 처음에는 투명 */
+		        max-height: 0; /* 처음에는 높이 0 */
+		        overflow: hidden; /* 내용이 넘치지 않도록 */
+		        transition: opacity 0.2s ease, max-height 0.2s ease; /* 트랜지션 속성 추가 */
+		    }
+		    
+		    .dropdown-menu.show {
+		        display: block; /* 메뉴를 보여줌 */
+		        opacity: 1; /* 투명도를 1로 변경 */
+		        max-height: 500px; /* 적당한 최대 높이 설정 */
+		    }
+		
+		    .dropdown-menu ul {
+		        list-style-type: none;
+		        margin: 0;
+		        padding: 0;
+		    }
+		
+		    .dropdown-menu ul li {
+		        padding: 8px;
+		        text-align: left;
+		    }
+		
+		    .dropdown-menu ul li a {
+		        text-decoration: none;
+		        color: black;
+		        display: block;
+		    }
+		
+		    .dropdown-menu ul li a:hover {
+		        background-color: #f1f1f1;
+		    }
+
 		</style>
 	</head>
 
@@ -190,18 +251,27 @@
 					<div class="menuEls" onclick="toThe('list.bo?memNo=${loginMember.memNo}')">게시판</div>
 				</c:if>
 			</div>`
-
-			<div class="about_user">
-				<span class="material-icons" onclick="toCodeTyping()">description</span>
-				<c:choose>
-					<c:when test="${not empty loginMember}">
-						<div><img src="${loginMember.profile}"> ${loginMember.gitNick}</div>
-					</c:when>
-					<c:otherwise>						
+			<c:choose>
+				<c:when test="${not empty loginMember}">
+					<div class="about_login_user">
+						<span class="material-icons login_user1" onclick="toCodeTyping()" style="width: 20%">description</span>
+						<span class="login_user2" style="width: 80%"><img src="${loginMember.profile}">${loginMember.gitNick} <a style="font-size: 15px" onclick="toggleMenu()">▼</a></span>
+						<div id="dropdownMenu" class="dropdown-menu">
+			                <ul>
+			                    <li><a href="mypage.me">MyPage</a></li>
+			                    <li><a href="setting.me">Settings</a></li>
+			                    <li><a href="logout.me">Logout</a></li>
+			                </ul>
+			            </div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="about_user">
+						<span class="material-icons" onclick="toCodeTyping()">description</span>
 						<span class="material-symbols-outlined" onclick="toThe('login.me')">login</span>
-					</c:otherwise>
-				</c:choose>
-			</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</header>
 
 		<div class="outer">
@@ -249,8 +319,14 @@
 				});
 
 			});
-
-
+			 function toggleMenu() {
+			        var menu = document.getElementById("dropdownMenu");
+			        if (menu.classList.contains("show")) {
+			            menu.classList.remove("show");
+			        } else {
+			            menu.classList.add("show");
+			        }
+			    }
 		</script>
 
 	</body>
