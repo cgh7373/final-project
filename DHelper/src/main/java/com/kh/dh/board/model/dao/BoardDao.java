@@ -16,14 +16,14 @@ public class BoardDao {
 		return sst.selectOne("boardMapper.selectListCount");
 	}
 
-	public ArrayList<Board> selectList(SqlSessionTemplate sst, PageInfo pi) {
+	public ArrayList<Board> selectList(SqlSessionTemplate sst, PageInfo pi, Integer memNo) {
 		
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sst.selectList("boardMapper.selectList", null, rowBounds);
+		return (ArrayList)sst.selectList("boardMapper.selectList", memNo, rowBounds);
 	}
 
 	public int insertBoard(SqlSessionTemplate sst, Board b) {

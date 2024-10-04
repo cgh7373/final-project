@@ -25,8 +25,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public ArrayList<Board> selectList(PageInfo pi) {
-		return bd.selectList(sst,pi);
+	public ArrayList<Board> selectList(PageInfo pi, Integer memNo) {
+		return bd.selectList(sst,pi,memNo);
 	}
 
 	@Override

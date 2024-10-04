@@ -107,9 +107,9 @@
 						<tr class="form-row">
 							<div id="languages"> 사용언어
 								<select id="language">
-									<option value="">JavaScript</option>
-									<option value="">HTML</option>
-									<option value="">JAVA</option>
+									<option>JavaScript</option>
+									<option>HTML</option>
+									<option>JAVA</option>
 								</select>
 							</div>
 						</tr>
@@ -131,24 +131,29 @@
 
 				$(() => {
 					$(".submit-button").click(() => {
-						const code = $(".codeInput").val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
+						const code = $(".codeInput").val().replace(/&/g, "&amp;")
+							.replace(/"/g, "&quot;")
+							.replace(/'/g, "&#39;");
 						const title = $(".form-input").val();
 						const content = $(".form-textarea").val();
+						const lang = $("#language").val();
 						$.ajax({
 							url: "insert.bo",
 							data: {
-								code: code,
-								boardTitle: title,
-								boardContent: content,
+								boardWriter: ${ loginMember.memNo },
+							code: code,
+							boardTitle: title,
+							boardContent: content,
+							boardLang: lang,
 							},
-							success: result => {
-								if (result) {
-									window.location.href = "list.bo";
-								}
-							},
-							error: () => {
-								console.log("게시글 작성용 ajax 실패");
-							},
+						success: result => {
+							if (result) {
+								window.location.href = "list.bo?memNo=${loginMember.memNo}";
+							}
+						},
+						error: () => {
+							console.log("게시글 작성용 ajax 실패");
+						},
 						})
 					})
 				})

@@ -31,12 +31,12 @@ public class BoardController {
 	private BoardServiceImpl bs;
 
 	@RequestMapping("list.bo")
-	public ModelAndView selectList(@RequestParam(value="cPage", defaultValue="1") int currentPage, ModelAndView mv) {
+	public ModelAndView selectList(@RequestParam(value="cPage", defaultValue="1") int currentPage, ModelAndView mv, Integer memNo) {
 		int listCount = bs.selectListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 5);
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 6);
 		
-		ArrayList<Board> list = bs.selectList(pi);
+		ArrayList<Board> list = bs.selectList(pi, memNo);
 		
 		/*
 		mv.addObject("pi", pi);

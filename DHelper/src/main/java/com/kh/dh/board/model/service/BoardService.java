@@ -8,6 +8,6 @@ import com.kh.dh.common.model.vo.PageInfo;
 public interface BoardService {
 
 	int selectListCount();
-	ArrayList<Board> selectList(PageInfo pi);
+	ArrayList<Board> selectList(PageInfo pi, Integer mNo);
 	int insertBoard(Board b);
 }
