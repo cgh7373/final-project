@@ -231,7 +231,7 @@ inputs.forEach(input => {
       <div class="login-content">
         <form>
           <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
-          <h2 class="title">Welcome</h2>
+          <h2 class="title">Welcome!</h2>
           <div class="div">
             <h3>DevHelper</h3>
           </div>
