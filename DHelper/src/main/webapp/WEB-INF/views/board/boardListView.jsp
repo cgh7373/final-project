@@ -16,7 +16,7 @@
 					}
 
 					#sortingBar {
-						height: 80px;
+						height: 60px;
 						display: flex;
 						align-items: center;
 						position: relative;
@@ -69,17 +69,30 @@
 
 					#boardList {
 						width: 100%;
-						height: 735px;
+						height: 756px;
 						display: flex;
 						flex-wrap: wrap;
 						gap: 1%;
 
 						& .boards {
 							width: 32.5%;
-							height: 48%;
-							border-radius: 10px;
-							overflow: hidden;
+							height: 46%;
 							border: 1px solid #000;
+							position: relative;
+							border-radius: 10px;
+
+
+							& .answerMark {
+								position: absolute;
+								width: 30px;
+								height: 30px;
+								background-color: rgb(241, 239, 107);
+								right: 5px;
+								top: -31px;
+								display: flex;
+								justify-content: center;
+								line-height: 33px;
+							}
 
 							& .thumbnail {
 								width: 100%;
@@ -88,20 +101,9 @@
 								align-items: center;
 								justify-content: center;
 								position: relative;
-
-								& .answerMark {
-									position: absolute;
-									width: 30px;
-									height: 30px;
-									background-color: rgb(241, 239, 107);
-									right: 0;
-									top: 0;
-									border-left: 1px solid #000;
-									border-bottom: 1px solid #000;
-									display: flex;
-									justify-content: center;
-									line-height: 33px;
-								}
+								overflow: hidden;
+								border-top-left-radius: 10px;
+								border-top-right-radius: 10px;
 
 								& pre {
 									width: 100%;
@@ -127,6 +129,8 @@
 								position: relative;
 								justify-content: space-between;
 								background-color: #fff;
+								border-bottom-left-radius: 10px;
+								border-bottom-right-radius: 10px;
 
 								& .underBoardInfo {
 									display: flex;
@@ -142,7 +146,7 @@
 
 					#pagingArea {
 						width: 100%;
-						height: 10%;
+						height: 6%;
 
 						& .pagination {
 							display: flex;
@@ -188,13 +192,13 @@
 						<c:forEach var="b" items="${list}">
 
 							<div class="boards">
+								<c:if test="${b.answer eq 'Y'}">
+									<div class="answerMark">🏆</div>
+								</c:if>
 								<div class="thumbnail">
 									<pre>
 <code class="language-js" id="code-${b.boardNo}">${b.code}</code>
 									</pre>
-									<c:if test="${b.answer eq 'Y'}">
-										<div class="answerMark">🏆</div>
-									</c:if>
 								</div>
 								<div class="underBoard">
 									<div class=lang>${b.boardLang}</div>
@@ -223,12 +227,14 @@
 
 								<c:otherwise>
 									<li class="page-item"><a class="page-link"
-											href="list.bo?cPage=${ pi.currentPage - 1 }&memNo=${loginMember.memNo}">Previous</a></li>
+											href="list.bo?cPage=${ pi.currentPage - 1 }&memNo=${loginMember.memNo}">Previous</a>
+									</li>
 								</c:otherwise>
 							</c:choose>
 
 							<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
-								<li class="page-item"><a class="page-link" href="list.bo?cPage=${ p }&memNo=${loginMember.memNo}">${ p }</a></li>
+								<li class="page-item"><a class="page-link"
+										href="list.bo?cPage=${ p }&memNo=${loginMember.memNo}">${ p }</a></li>
 							</c:forEach>
 
 							<c:choose>
@@ -238,7 +244,8 @@
 
 								<c:otherwise>
 									<li class="page-item"><a class="page-link"
-											href="list.bo?cPage=${ pi.currentPage + 1 }&memNo=${loginMember.memNo}">Next</a></li>
+											href="list.bo?cPage=${ pi.currentPage + 1 }&memNo=${loginMember.memNo}">Next</a>
+									</li>
 								</c:otherwise>
 							</c:choose>
 						</ul>
