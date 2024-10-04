@@ -183,7 +183,7 @@
 			<div class="menubar">
 				<div class="menuSlide"></div>
 				<div class="menuEls" onclick="toThe('searchNews')">HOME</div>
-				<div class="menuEls" onclick="toThe('projectMain')">프로젝트관리</div>
+				<div class="menuEls" onclick="toThe('myRepo.re')">My Repository</div>
 				<div class="menuEls">코딩테스트</div>
 				<div class="menuEls">취업관련</div>
 				<div class="menuEls" onclick="toThe('list.bo')">게시판</div>
