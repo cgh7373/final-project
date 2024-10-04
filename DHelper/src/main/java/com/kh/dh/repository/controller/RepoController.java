@@ -10,5 +10,10 @@ public class RepoController {
 	public String myRepo() {
 		return "repository/repository";
 	}
+	
+	@RequestMapping("repoDetail.re")
+	public String repoDetail() {
+		return "repository/repoDetail";
+	}
 
 }
