@@ -11,6 +11,9 @@ public class CommonController {
 		return "react-app/index";
 	}
 	
-	
+	@RequestMapping("toMain")
+	public String toMain() {
+		return "redirect:/";
+	}
 	
 }
